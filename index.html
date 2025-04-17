@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 预加载资源 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://api.open-meteo.com">
+    
+    <!-- 字体预加载 -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JPQJRDFL0S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JPQJRDFL0S');
+    </script>
+
+    <!-- International SEO -->
+    <title data-i18n="title">Smart Travel Outfit Guide</title>
+    <meta name="description" content="Smart travel outfit recommendations based on weather conditions">
+    <meta name="keywords" content="travel outfit, weather fashion, travel clothing, smart wardrobe, AI fashion">
+    <meta name="author" content="Travel Outfit">
+    <meta http-equiv="content-language" content="en">
+    
+    <!-- Language versions -->
+    <link rel="alternate" hreflang="en" href="https://chenrui134.github.io/travel-outfit?lang=en">
+    <link rel="alternate" hreflang="zh" href="https://chenrui134.github.io/travel-outfit?lang=zh">
+    <link rel="alternate" hreflang="x-default" href="https://chenrui134.github.io/travel-outfit">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Smart Travel Outfit Guide">
+    <meta property="og:description" content="AI-powered weather-based fashion recommendations for travelers">
+    <meta property="og:image" content="./assets/images/banner.webp">
+    <meta property="og:image:alt" content="Travel Outfit Guide Banner">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Travel Outfit Guide">
+    <meta name="twitter:description" content="AI-powered weather-based fashion recommendations for travelers">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>">
+    
+    <!-- Mobile Optimization -->
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <!-- Search Engine Optimization -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://chenrui134.github.io/travel-outfit">
+    
+    <!-- 样式表 -->
+    <link rel="stylesheet" href="styles.min.css">
+
+    <!-- 图片预加载 -->
+    <link rel="preload" as="image" href="./assets/images/banner.webp" type="image/webp">
+    <link rel="preload" as="image" href="./assets/images/banner.jpg" type="image/jpeg">
+    <style>
+        /* 基础样式 */
+        body {
+            visibility: hidden;
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -.022em;
+            font-size: 15.75px; /* 原始 15px 增加 5% */
+        }
+
+        /* 容器样式调整 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;  /* 增加上下内边距 */
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* 语言切换按钮位置调整 */
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            margin: 0;
+        }
+
+        .language-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            background: #0071e3;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14.7px; /* 原始 14px 增加 5% */
+            font-weight: 500;
+            min-width: 100px;
+            justify-content: space-between;
+        }
+
+        .language-btn:hover {
+            background: #0077ed;
+        }
+
+        .language-btn::after {
+            content: '▼';
+            font-size: 10.5px; /* 原始 10px 增加 5% */
+            transition: transform 0.3s ease;
+        }
+
+        .language-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        .language-list {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 4px;
+            background: #fff;
+            border-radius: 6px;
+            padding: 4px;
+            display: none;
+            z-index: 1000;
+            min-width: 120px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .language-list.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 8px 12px;
+            color: #1d1d1f;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .language-option:hover {
+            background: #f5f5f7;
+        }
+
+        .language-option.selected {
+            background: #0071e3;
+            color: #fff;
+        }
+
+        /* 主标题和说明文字样式调整 */
+        .app-title {
+            font-size: 35.28px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 0 0 16px;  /* 调整底部间距 */
+            text-align: center;
+            padding-top: 20px;  /* 增加顶部间距 */
+        }
+
+        .app-subtitle {
+            text-align: center;
+            color: #1d1d1f;
+            margin: 0 0 8px;  /* 调整行间距 */
+            font-size: 15.75px;
+        }
+
+        .app-instruction {
+            text-align: center;
+            color: #86868b;
+            margin: 0 0 40px;  /* 增加与下方内容的间距 */
+            font-size: 14.7px;
+        }
+
+        /* 主内容区域调整 */
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;  /* 移除内边距 */
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .main-content {
+            padding: 20px;  /* 添加内边距 */
+        }
+
+        /* 导航区域 */
+        .navigation {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .nav-section {
+            position: relative;
+            flex: 1;
+        }
+
+        .nav-title {
+            font-size: 14.7px; /* 原始 14px 增加 5% */
+            font-weight: 500;
+            color: #1d1d1f;
+            padding: 8px 12px;
+            background: #f5f5f7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            white-space: nowrap;
+        }
+
+        .nav-title::after {
+            content: '▼';
+            font-size: 10.5px; /* 原始 10px 增加 5% */
+            color: #86868b;
+            transition: transform 0.3s ease;
+            margin-left: 6px;
+        }
+
+        .nav-title.active::after {
+            transform: rotate(180deg);
+        }
+
+        .nav-title:hover {
+            background: #e5e5e7;
+        }
+
+        .nav-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 8px;
+            margin-top: 8px;
+            z-index: 10;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+            min-width: 160px;
+        }
+
+        .nav-list.active {
+            display: block;
+        }
+
+        .nav-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-size: 14.7px; /* 原始 14px 增加 5% */
+            white-space: nowrap;
+        }
+
+        .nav-item:hover {
+            background: #f5f5f7;
+        }
+
+        .nav-item.selected {
+            background: #0071e3;
+            color: white;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d2d2d7;
+            border-radius: 6px;
+            font-size: 14.7px; /* 原始 14px 增加 5% */
+            background: #f5f5f7;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #0071e3;
+            background: white;
+        }
+
+        /* 天气信息 */
+        .weather-info {
+            background: white;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 24px;
+        }
+
+        .current-weather {
+            text-align: center;
+            flex: 0 0 200px;
+            padding: 20px;
+            background: #f5f5f7;
+            border-radius: 12px;
+        }
+
+        .current-temp {
+            font-size: 37.8px; /* 原始 36px 增加 5% */
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+
+        .current-details {
+            font-size: 14.7px; /* 原始 14px 增加 5% */
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .last-update {
+            font-size: 12.6px; /* 原始 12px 增加 5% */
+            color: #86868b;
+        }
+
+        /* 天气预报卡片容器 */
+        .forecast-wrapper {
+            position: relative;
+            flex: 1;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .forecast-scroll {
+            display: flex;
+            gap: 12px;
+            transition: transform 0.3s ease;
+            padding: 0 32px;
+            width: calc(175% + 24px); /* 调整为可以容纳7张卡片的宽度 */
+        }
+
+        /* 天气预报卡片 */
+        .forecast-card {
+            flex: 0 0 calc(14.28% - 10.3px);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .forecast-card.active {
+            background: #0071e3;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+        }
+
+        .forecast-weather-data {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .forecast-card.active .forecast-weather-data {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .weather-icon {
+            font-size: 1.4rem;
+            margin: 8px 0;
+        }
+
+        /* 导航按钮 */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 100%;
+            border: none;
+            background: rgba(0, 0, 0, 0.03);
+            color: #1d1d1f;
+            font-size: 16.8px; /* 原始 16px 增加 5% */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.2s ease;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-arrow.prev {
+            left: 0;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+
+        .nav-arrow.next {
+            right: 0;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .nav-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-arrow::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-style: solid;
+            border-width: 2px 2px 0 0;
+            display: inline-block;
+            position: relative;
+            transform: rotate(-135deg);
+            transition: transform 0.2s ease;
+        }
+
+        .nav-arrow.next::before {
+            transform: rotate(45deg);
+        }
+
+        .forecast-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .forecast-date {
+            font-size: 12.6px; /* 原始 12px 增加 5% */
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #86868b;
+        }
+
+        .forecast-weather {
+            font-size: 21px; /* 原始 20px 增加 5% */
+            margin: 6px 0;
+        }
+
+        .forecast-temp {
+            font-size: 14.7px; /* 原始 14px 增加 5% */
+            margin: 6px 0;
+            font-weight: 500;
+        }
+
+        .forecast-details {
+            font-size: 11.55px; /* 原始 11px 增加 5% */
+            color: #86868b;
+            line-height: 1.4;
+        }
+
+        .forecast-card.active .forecast-date,
+        .forecast-card.active .forecast-details {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .weather-info {
+                flex-direction: column;
+            }
+
+            .current-weather {
+                flex: none;
+                width: 100%;
+            }
+
+            .forecast-scroll {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 穿搭建议 */
+        .outfit-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 2rem;
+            padding: 20px;
+            gap: 2rem;
+        }
+
+        .outfit-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 24px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 12px;
+        }
+
+        .outfit-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .outfit-icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+        }
+
+        .outfit-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .outfit-temp {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            color: #0071e3;
+            margin-bottom: 16px;
+        }
+
+        .outfit-temp-icon {
+            margin-right: 8px;
+        }
+
+        .outfit-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .outfit-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .outfit-item:last-child {
+            border-bottom: none;
+        }
+
+        .outfit-item-icon {
+            margin-right: 12px;
+            color: #666;
+        }
+
+        /* 添加响应式布局 */
+        @media (max-width: 1024px) {
+            .outfit-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .outfit-card {
+                width: 90%;
+                max-width: 300px;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* 确保内容在页面底部 */
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        /* 穿搭推荐容器的新样式 */
+        #outfit-recommendations {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        /* 错误信息 */
+        .error-message {
+            text-align: center;
+            padding: 20px;
+            background: #fff3f3;
+            border-radius: 12px;
+            color: #ff3b30;
+            font-size: 14.7px; /* 原始 14px 增加 5% */
+            margin-top: 20px;
+        }
+
+        /* 加载指示器 */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0071e3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 动画效果 */
+        .nav-item, .outfit-card, .forecast-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-item:active, .outfit-card:active, .forecast-card:active {
+            transform: scale(0.98);
+        }
+
+        /* 日期导航样式 */
+        .calendar-wrapper {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            margin-top: 8px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .calendar-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1d1d1f;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        .calendar-nav button {
+            background: none;
+            border: none;
+            padding: 4px 8px;
+            cursor: pointer;
+            color: #0071e3;
+            border-radius: 6px;
+        }
+
+        .calendar-nav button:hover {
+            background: #f5f5f7;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            text-align: center;
+        }
+
+        .calendar-weekday {
+            font-size: 12px;
+            color: #86868b;
+            padding: 4px;
+            font-weight: 500;
+        }
+
+        .calendar-day {
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .calendar-day:hover {
+            background: #f5f5f7;
+        }
+
+        .calendar-day.active {
+            background: #0071e3;
+            color: white;
+        }
+
+        .calendar-day.today {
+            font-weight: 600;
+        }
+
+        .calendar-day.has-weather::after {
+            content: '•';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #0071e3;
+            font-size: 12px;
+        }
+
+        .calendar-day.active.has-weather::after {
+            color: white;
+        }
+
+        .calendar-day.disabled {
+            color: #d2d2d7;
+            cursor: not-allowed;
+        }
+
+        .outfit-content {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .outfit-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .outfit-content li {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .outfit-content li:last-child {
+            border-bottom: none;
+        }
+
+        .outfit-content i {
+            margin-right: 12px;
+            color: #0071e3;
+        }
+
+        #outfit-recommendations {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 2rem;
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        @media (max-width: 1024px) {
+            #outfit-recommendations {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .outfit-card {
+                width: 90%;
+                max-width: 300px;
+                margin: 1rem 0;
+            }
+        }
+
+        /* 添加用户评价区域的样式 */
+        .testimonials-section {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .testimonials-header {
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .testimonials-title {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .testimonials-title span {
+            color: #fff;
+        }
+
+        .testimonials-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .testimonials-container {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding: 20px 40px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 -40px;
+        }
+
+        .testimonial-card {
+            flex: 0 0 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 32px;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+            text-align: left;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            margin-right: 16px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .testimonial-position {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            font-style: italic;
+        }
+
+        /* 自定义滚动条 */
+        .testimonials-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-title {
+                font-size: 2.2rem;
+            }
+
+            .testimonial-card {
+                flex: 0 0 300px;
+                padding: 24px;
+            }
+        }
+
+        /* 添加导航按钮样式 */
+        .testimonials-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .testimonials-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonials-nav.prev {
+            left: 20px;
+        }
+
+        .testimonials-nav.next {
+            right: 20px;
+        }
+
+        /* 默认用户头像样式 */
+        .testimonial-avatar {
+            background: #2c2c2c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        /* 添加指示器样式 */
+        .testimonials-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #fff;
+            transform: scale(1.2);
+        }
+
+        /* 温度单位切换按钮 */
+        .unit-switch {
+            position: absolute;
+            top: 20px;
+            right: 120px; /* 位于语言切换按钮左侧 */
+            margin: 0;
+        }
+
+        .unit-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            background: #0071e3;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14.7px;
+            font-weight: 500;
+            min-width: 80px;
+            justify-content: space-between;
+        }
+
+        .unit-btn:hover {
+            background: #0077ed;
+        }
+
+        .unit-list {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 4px;
+            background: #fff;
+            border-radius: 6px;
+            padding: 4px;
+            display: none;
+            z-index: 1000;
+            min-width: 100px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .unit-list.show {
+            display: block;
+        }
+
+        .unit-option {
+            padding: 8px 12px;
+            color: #1d1d1f;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .unit-option:hover {
+            background: #f5f5f7;
+        }
+
+        .unit-option.selected {
+            background: #0071e3;
+            color: #fff;
+        }
+
+        /* 温度显示样式优化 */
+        .temperature-display {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 24px;
+            font-weight: 500;
+            color: #1d1d1f;
+            margin: 10px 0;
+        }
+
+        .temperature-value {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .temperature-unit {
+            font-size: 20px;
+            color: #86868b;
+            margin-left: 4px;
+        }
+
+        .temperature-range {
+            font-size: 16px;
+            color: #86868b;
+            margin-left: 12px;
+            padding-left: 12px;
+            border-left: 1px solid #d2d2d7;
+        }
+
+        /* 温度单位切换按钮样式优化 */
+        .unit-switch {
+            position: absolute;
+            top: 20px;
+            right: 120px;
+            margin: 0;
+            z-index: 1000;
+        }
+
+        .unit-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            background: #0071e3;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14.7px;
+            font-weight: 500;
+            min-width: 80px;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .unit-btn:hover {
+            background: #0077ed;
+            transform: translateY(-1px);
+        }
+
+        .unit-list {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 4px;
+            background: #fff;
+            border-radius: 6px;
+            padding: 4px;
+            display: none;
+            z-index: 1000;
+            min-width: 100px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .unit-list.show {
+            display: block;
+        }
+
+        .unit-option {
+            padding: 8px 12px;
+            color: #1d1d1f;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .unit-option:hover {
+            background: #f5f5f7;
+        }
+
+        .unit-option.selected {
+            background: #0071e3;
+            color: #fff;
+        }
+
+        .unit-option.selected::after {
+            content: '✓';
+            margin-left: 8px;
+        }
+
+        /* 时区显示样式 */
+        .timezone-display {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #86868b;
+            margin: 4px 0;
+        }
+
+        .timezone-icon {
+            font-size: 16px;
+        }
+
+        .local-time {
+            font-weight: 500;
+            color: #1d1d1f;
+        }
+
+        .timezone-name {
+            color: #86868b;
+        }
+
+        /* 时区选择器样式 */
+        .timezone-selector {
+            position: absolute;
+            top: 20px;
+            right: 220px;
+            margin: 0;
+            z-index: 1000;
+        }
+
+        .timezone-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            background: #0071e3;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14.7px;
+            font-weight: 500;
+            min-width: 120px;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .timezone-btn:hover {
+            background: #0077ed;
+            transform: translateY(-1px);
+        }
+
+        .timezone-list {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 4px;
+            background: #fff;
+            border-radius: 6px;
+            padding: 4px;
+            display: none;
+            z-index: 1000;
+            min-width: 200px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.2s ease;
+        }
+
+        .timezone-list.show {
+            display: block;
+        }
+
+        .timezone-option {
+            padding: 8px 12px;
+            color: #1d1d1f;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .timezone-option:hover {
+            background: #f5f5f7;
+        }
+
+        .timezone-option.selected {
+            background: #0071e3;
+            color: #fff;
+        }
+
+        .timezone-option.selected::after {
+            content: '✓';
+            margin-left: 8px;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            /* 顶部按钮组样式 */
+            .top-buttons {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                display: flex;
+                justify-content: flex-end;
+                gap: 8px;
+                padding: 12px;
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                z-index: 1000;
+            }
+
+            .language-switch,
+            .unit-switch,
+            .timezone-selector {
+                position: static;
+                margin: 0;
+            }
+
+            .language-btn,
+            .unit-btn,
+            .timezone-btn {
+                padding: 6px 10px;
+                font-size: 13px;
+                min-width: auto;
+            }
+
+            /* 主容器调整 */
+            .app-container {
+                margin-top: 60px;
+                border-radius: 0;
+            }
+
+            /* 温度显示调整 */
+            .temperature-display {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .temperature-value {
+                font-size: 28px;
+            }
+
+            .temperature-range {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+            }
+
+            /* 时区显示调整 */
+            .timezone-display {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            /* 下拉菜单调整 */
+            .language-list,
+            .unit-list,
+            .timezone-list {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: 0;
+                max-height: 50vh;
+                border-radius: 20px 20px 0 0;
+                animation: slideUp 0.3s ease;
+            }
+
+            @keyframes slideUp {
+                from { transform: translateY(100%); }
+                to { transform: translateY(0); }
+            }
+
+            /* 内容区域调整 */
+            .main-content {
+                padding: 16px;
+            }
+
+            .app-title {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+
+            .app-subtitle {
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+
+            .app-instruction {
+                font-size: 13px;
+                margin-bottom: 24px;
+            }
+        }
+
+        /* 添加安全区域支持 */
+        @supports (padding: max(0px)) {
+            @media (max-width: 768px) {
+                .top-buttons {
+                    padding-top: max(12px, env(safe-area-inset-top));
+                    padding-bottom: max(12px, env(safe-area-inset-bottom));
+                }
+
+                .language-list,
+                .unit-list,
+                .timezone-list {
+                    padding-bottom: max(16px, env(safe-area-inset-bottom));
+                }
+            }
+        }
+
+        /* 反馈区块样式 */
+        .feedback-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .feedback-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .feedback-description {
+            font-size: 1.1rem;
+            color: #86868b;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .feedback-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feedback-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .feedback-form label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-form input[type="text"],
+        .feedback-form input[type="email"],
+        .feedback-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #1d1d1f;
+            background: #f5f5f7;
+            transition: all 0.3s ease;
+        }
+
+        .feedback-form input:focus,
+        .feedback-form textarea:focus {
+            outline: none;
+            border-color: #0071e3;
+            background: #fff;
+        }
+
+        .rating-stars {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .rating-stars input {
+            display: none;
+        }
+
+        .rating-stars label {
+            font-size: 2rem;
+            color: #d2d2d7;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .rating-stars label:hover,
+        .rating-stars label:hover ~ label,
+        .rating-stars input:checked ~ label {
+            color: #ffd700;
+        }
+
+        .feedback-submit {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #0071e3;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .feedback-submit:hover {
+            background: #0077ed;
+            transform: translateY(-1px);
+        }
+
+        .feedback-submit:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .feedback-section {
+                padding: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .feedback-title {
+                font-size: 1.5rem;
+            }
+
+            .feedback-description {
+                font-size: 1rem;
+            }
+
+            .rating-stars label {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 添加加载指示器 -->
+    <div id="loading-indicator" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <picture>
+                <source srcset="./assets/images/banner.webp" type="image/webp">
+                <img src="./assets/images/banner.jpg" alt="Travel Outfit Guide Banner" 
+                     width="1200" height="400" class="header-banner">
+            </picture>
+            <h1 class="app-title" data-i18n="title">Smart Travel Outfit Guide</h1>
+            <h2 class="app-subtitle" data-i18n="subtitle">AI-Powered Weather-Based Fashion Recommendations</h2>
+            <p class="app-instruction" data-i18n="welcomeMessage">Plan your perfect travel wardrobe</p>
+    </div>
+
+        <div class="main-content">
+            <div class="search-section">
+                <div class="form-group">
+                    <label for="countrySelect" data-i18n="countryLabel">Country</label>
+                    <select id="countrySelect"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="citySelect" data-i18n="cityLabel">City</label>
+                    <select id="citySelect"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateSelect" data-i18n="dateLabel">Travel Date</label>
+                    <input type="date" id="dateSelect">
+                </div>
+            </div>
+
+            <div id="weather-display"></div>
+            <div id="outfit-recommendations"></div>
+
+            <!-- 用户反馈区块 -->
+            <div class="feedback-section">
+                <h2 class="feedback-title" data-i18n="feedbackTitle">Share Your Experience</h2>
+                <p class="feedback-description" data-i18n="feedbackDescription">Help us improve by sharing your thoughts about our outfit recommendations</p>
+                
+                <form id="feedbackForm" class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedbackName" data-i18n="feedbackNameLabel">Your Name</label>
+                        <input type="text" id="feedbackName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackEmail" data-i18n="feedbackEmailLabel">Email (optional)</label>
+                        <input type="email" id="feedbackEmail" name="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackRating" data-i18n="feedbackRatingLabel">Rating</label>
+                        <div class="rating-stars">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">★</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1">★</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackMessage" data-i18n="feedbackMessageLabel">Your Feedback</label>
+                        <textarea id="feedbackMessage" name="message" rows="4" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="feedback-submit" data-i18n="feedbackSubmit">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 帮助翻译链接 -->
+    <a href="https://crowdin.com/project/your-project" class="help-translate" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span data-i18n="helpTranslate">Help translate</span>
+    </a>
+
+    <div class="subscribe-section">
+        <h2 class="section-title">Stay Updated</h2>
+        <p class="section-description">Subscribe to receive the latest outfit recommendations and travel tips.</p>
+        <form id="subscribeForm" class="subscribe-form">
+            <input type="email" id="subscribeEmail" placeholder="Enter your email" required>
+            <button type="submit" class="primary-button">Subscribe</button>
+        </form>
+        <p class="privacy-notice">By subscribing, you agree to our <a href="/privacy">Privacy Policy</a> and consent to receive marketing emails.</p>
+    </div>
+
+    <!-- 用户反馈区块 -->
+    <div class="container feedback-section">
+        <h2 class="section-title">我们期待您的反馈</h2>
+        <p class="section-description">您的意见对我们很重要！请分享您的想法或建议，帮助我们改进网站。</p>
+        <a href="mailto:feedback@travel-outfit.com" class="primary-button feedback-button">发送反馈</a>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
