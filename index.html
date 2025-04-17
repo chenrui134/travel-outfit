@@ -1530,80 +1530,131 @@
         <div class="spinner"></div>
     </div>
 
-    <div class="container">
-        <div class="header">
-            <picture>
-                <source srcset="assets/images/banner.webp" type="image/webp">
-                <img src="assets/images/banner.jpg" alt="Travel Outfit Guide Banner" 
-                     width="1200" height="400" class="header-banner">
-            </picture>
-            <h1 class="app-title" data-i18n="title">Smart Travel Outfit Guide</h1>
-            <h2 class="app-subtitle" data-i18n="subtitle">AI-Powered Weather-Based Fashion Recommendations</h2>
-            <p class="app-instruction" data-i18n="welcomeMessage">Plan your perfect travel wardrobe</p>
-    </div>
-
-        <div class="main-content">
-            <div class="search-section">
-                <div class="form-group">
-                    <label for="countrySelect" data-i18n="countryLabel">Country</label>
-                    <select id="countrySelect"></select>
-                </div>
-
-                <div class="form-group">
-                    <label for="citySelect" data-i18n="cityLabel">City</label>
-                    <select id="citySelect"></select>
-                </div>
-
-                <div class="form-group">
-                    <label for="dateSelect" data-i18n="dateLabel">Travel Date</label>
-                    <input type="date" id="dateSelect">
-                </div>
+    <div class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <span class="logo-icon">🌤️</span>
+                    <span class="logo-text">Travel Outfit</span>
+                </a>
             </div>
-
-            <div id="weather-display"></div>
-            <div id="outfit-recommendations"></div>
-
-            <!-- 用户反馈区块 -->
-            <div class="feedback-section">
-                <h2 class="feedback-title" data-i18n="feedbackTitle">Share Your Experience</h2>
-                <p class="feedback-description" data-i18n="feedbackDescription">Help us improve by sharing your thoughts about our outfit recommendations</p>
-                
-                <form id="feedbackForm" class="feedback-form">
-                    <div class="form-group">
-                        <label for="feedbackName" data-i18n="feedbackNameLabel">Your Name</label>
-                        <input type="text" id="feedbackName" name="name" required>
+            <div class="nav-right">
+                <div class="unit-switch">
+                    <button class="switch-btn" id="unitBtn">
+                        <span id="currentUnit">°C</span>
+                    </button>
+                    <div class="switch-list" id="unitList">
+                        <div class="switch-option" data-unit="C">°C</div>
+                        <div class="switch-option" data-unit="F">°F</div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="feedbackEmail" data-i18n="feedbackEmailLabel">Email (optional)</label>
-                        <input type="email" id="feedbackEmail" name="email">
+                </div>
+                <div class="language-switch">
+                    <button class="switch-btn" id="languageBtn">
+                        <span id="currentLang">English</span>
+                    </button>
+                    <div class="switch-list" id="languageList">
+                        <div class="switch-option" data-lang="en">English</div>
+                        <div class="switch-option" data-lang="zh">中文</div>
+                        <div class="switch-option" data-lang="ja">日本語</div>
+                        <div class="switch-option" data-lang="ko">한국어</div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="feedbackRating" data-i18n="feedbackRatingLabel">Rating</label>
-                        <div class="rating-stars">
-                            <input type="radio" id="star5" name="rating" value="5">
-                            <label for="star5">★</label>
-                            <input type="radio" id="star4" name="rating" value="4">
-                            <label for="star4">★</label>
-                            <input type="radio" id="star3" name="rating" value="3">
-                            <label for="star3">★</label>
-                            <input type="radio" id="star2" name="rating" value="2">
-                            <label for="star2">★</label>
-                            <input type="radio" id="star1" name="rating" value="1">
-                            <label for="star1">★</label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="feedbackMessage" data-i18n="feedbackMessageLabel">Your Feedback</label>
-                        <textarea id="feedbackMessage" name="message" rows="4" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="feedback-submit" data-i18n="feedbackSubmit">Submit Feedback</button>
-                </form>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="banner-container">
+                <picture>
+                    <source srcset="assets/images/banner.webp" type="image/webp">
+                    <img src="assets/images/banner.jpg" alt="Travel outfit banner" width="1200" height="400">
+                </picture>
+            </div>
+            <h1 class="app-title">Smart Travel Outfit Guide</h1>
+            <p class="subtitle">Get personalized outfit recommendations based on your destination's weather</p>
+        </header>
+
+        <main class="main-content">
+            <section class="search-section">
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" placeholder="Enter city name">
+                </div>
+                <div class="form-group">
+                    <label for="travel-date">Travel Date</label>
+                    <input type="date" id="travel-date">
+                </div>
+            </section>
+
+            <div id="weather-info" class="weather-display" style="display: none;">
+                <!-- Weather information will be inserted here -->
+            </div>
+
+            <div id="outfit-recommendations" class="outfit-container">
+                <!-- Outfit recommendations will be inserted here -->
+            </div>
+
+            <section class="feedback-section">
+                <h2 class="feedback-title">Share Your Experience</h2>
+                <p class="feedback-description">Help us improve our recommendations by sharing your feedback</p>
+                
+                <form class="feedback-form" id="feedbackForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email (optional)">
+                    
+                    <div class="rating-stars">
+                        <input type="radio" name="rating" id="star5" value="5">
+                        <label for="star5">★</label>
+                        <input type="radio" name="rating" id="star4" value="4">
+                        <label for="star4">★</label>
+                        <input type="radio" name="rating" id="star3" value="3">
+                        <label for="star3">★</label>
+                        <input type="radio" name="rating" id="star2" value="2">
+                        <label for="star2">★</label>
+                        <input type="radio" name="rating" id="star1" value="1">
+                        <label for="star1">★</label>
+                    </div>
+                    
+                    <textarea placeholder="Share your thoughts about our recommendations..." required></textarea>
+                    <button type="submit" class="feedback-submit">Submit Feedback</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to receive the latest outfit recommendations and travel tips.</p>
+                    <form id="subscribeForm" class="subscribe-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <p class="privacy-notice">By subscribing, you agree to our <a href="/privacy">Privacy Policy</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Travel Outfit. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
 
     <!-- 帮助翻译链接 -->
@@ -1631,6 +1682,13 @@
         <a href="mailto:feedback@travel-outfit.com" class="primary-button feedback-button">发送反馈</a>
     </div>
 
-    <script src="main.js"></script>
+    <div class="banner-container">
+        <picture>
+            <source srcset="assets/images/shield-icon.webp" type="image/webp">
+            <img src="assets/images/shield-icon.png" alt="Travel Outfit Shield" width="120" height="120">
+        </picture>
+    </div>
+
+    <script src="main.js" defer></script>
 </body>
 </html>
