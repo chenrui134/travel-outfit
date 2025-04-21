@@ -205,34 +205,35 @@
     </style>
 </head>
 <body>
-    <button class="language-switch" onclick="toggleLanguage()">English</button>
+    <button class="language-switch">English</button>
 
     <div class="container">
         <main class="main-section">
             <div class="title-section">
                 <h1 class="main-title">旅行着装顾问</h1>
                 <p class="subtitle">获取基于您目的地天气的个性化穿搭建议</p>
-            </div>
-
-            <div class="input-section">
-                <div class="input-group">
-                    <label for="destination">目的地</label>
-                    <input type="text" id="destination" placeholder="输入城市名称" value="上海">
+                <div id="weather-info" class="weather-info">
+                    <div class="weather-content">
+                        <h2 data-translate="outfitTitle">今日穿搭建议</h2>
+                        <div class="weather-details">
+                            <div class="temperature">
+                                <span class="current-temp">--°C</span>
+                                <span class="temp-range">--°C ~ --°C</span>
+                            </div>
+                            <div class="precipitation">
+                                <span data-translate="precipitation">降水概率</span>
+                                <span class="precip-value">--%</span>
+                            </div>
+                        </div>
+                        <div class="outfit-suggestions">
+                            <!-- 穿搭建议将通过JavaScript动态插入 -->
+                        </div>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="travel-date">旅行日期</label>
-                    <input type="date" id="travel-date">
-                </div>
-            </div>
-
-            <div id="weather-info" class="weather-info">
-                <!-- 天气信息将通过JavaScript动态插入 -->
             </div>
         </main>
 
         <footer class="footer">
-            <a href="privacy.html">隐私政策</a>
-            <a href="privacy-guide.html">使用指南</a>
             <p>© 2024 Travel Outfit. All rights reserved.</p>
         </footer>
     </div>
